@@ -30,6 +30,13 @@ def generate_launch_description():
         ),
         launch_arguments=[('world',defailt_gazebo_world_path),('verbose','true')]
     )
+
+    action_spawn_entitry = launch_ros.actions.Node(
+        package='gazebo_ros',
+        executable='spawn_entity.py',
+        arguments=['-topic','/robot_description','-entity','fishbot']
+    )
+
     # action_rviz_node = launch_ros.actions.Node(
     #     package='rviz2',
     #     executable='rviz2',
@@ -40,5 +47,6 @@ def generate_launch_description():
         action_declare_arg_mode_path, 
         action_robot_state_publisher,
         action_launch_gazebo,
+        action_spawn_entitry,
         # action_rviz_node,
     ])
